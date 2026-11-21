@@ -27,8 +27,11 @@ from origami_engine.simulation import (
     paper_centroid,
 )
 
-OUTPUT_VIDEO = PROJECT_ROOT / "individual_simulation.mp4"
-OUTPUT_REPORT = PROJECT_ROOT / "render_report.json"
+# Outputs are written to the current working directory, not next to the
+# installed package — so `origami-render` behaves the same whether the package
+# comes from a source checkout or a PyPI wheel.
+OUTPUT_VIDEO = Path.cwd() / "individual_simulation.mp4"
+OUTPUT_REPORT = Path.cwd() / "render_report.json"
 
 
 def trace_simulation(
@@ -146,7 +149,7 @@ def main():
         "rendered_forward_displacement": trace["forward_displacement"],
         "evaluator_forward_displacement": float(displacement),
         "difference": 0.0,
-        "video_path": str(OUTPUT_VIDEO.relative_to(PROJECT_ROOT)),
+        "video_path": str(OUTPUT_VIDEO),
         "video_written": is_mp4,
     }
     OUTPUT_REPORT.write_text(json.dumps(report, indent=2))

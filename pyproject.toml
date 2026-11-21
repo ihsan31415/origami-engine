@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "origami-engine"
-version = "0.1.0"
+version = "1.1.0"
 description = "MuJoCo origami folding simulator"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -50,7 +50,7 @@ dev = [
 include = ["origami_engine*"]
 
 [tool.setuptools.package-data]
-origami_engine = ["schemas/*.json"]
+origami_engine = ["schemas/*.json", "crease_patterns/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

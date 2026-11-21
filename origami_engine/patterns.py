@@ -8,7 +8,13 @@ from .constants import M, V
 from .serialization import load_creases_from_json
 from .types import Crease
 
-DEFAULT_PATTERN_JSON = Path(__file__).resolve().parent.parent / "crease_patterns" / "reference_miura_4x4.json"
+_PACKAGED_PATTERN_JSON = Path(__file__).resolve().parent / "crease_patterns" / "reference_miura_4x4.json"
+_REPO_PATTERN_JSON = Path(__file__).resolve().parent.parent / "crease_patterns" / "reference_miura_4x4.json"
+
+# The reference pattern ships inside the package (wheel + sdist), so it is
+# available no matter where the package is installed. The repo-root copy is
+# only a fallback for unusual layouts (e.g. a broken editable install).
+DEFAULT_PATTERN_JSON = _PACKAGED_PATTERN_JSON if _PACKAGED_PATTERN_JSON.exists() else _REPO_PATTERN_JSON
 
 
 def reference_miura_legacy_creases():
@@ -72,7 +78,13 @@ def reference_miura_render_creases():
 
 
 def load_default_creases():
-    """Load default crease pattern from JSON when available, else fallback."""
+    """Load the default crease pattern from the packaged JSON file.
+
+    The JSON ships inside the package, so this works identically in a source
+    checkout and in a PyPI wheel install. The embedded
+    `reference_miura_render_creases()` (same 24-crease / 16-face / 9-loop
+    topology) remains as a defensive fallback if the file is ever missing.
+    """
     if DEFAULT_PATTERN_JSON.exists():
         return load_creases_from_json(DEFAULT_PATTERN_JSON)
     return reference_miura_render_creases()
