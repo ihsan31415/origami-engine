@@ -34,7 +34,7 @@ from .plotting import plot_pattern
 from .serialization import CREASE_SCHEMA, load_creases_from_json, normalize_creases, save_creases_to_json
 from .types import Crease, Pattern, SimulationResult
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = [
     "CREASE_SCHEMA",

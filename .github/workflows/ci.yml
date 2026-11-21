@@ -65,3 +65,7 @@ jobs:
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          # PyPI rejects re-uploaded filenames; skip files already present so
+          # re-running a failed job does not 400 on the wheel/sdist.
+          skip-existing: true

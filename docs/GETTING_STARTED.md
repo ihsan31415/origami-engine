@@ -37,7 +37,7 @@ pip install "origami-engine[dev]"
 
 ```bash
 python -c "import origami_engine; print(origami_engine.__version__)"
-# 0.1.0
+# 0.1.1
 ```
 
 ### Using the package after a pip install
