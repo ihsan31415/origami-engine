@@ -93,6 +93,42 @@ Below is the physical rendering of the simulation output, demonstrating how the 
 
 *This repository is structured as a **library** for crease pattern simulation and analysis. For full documentation, see the dedicated files below.*
 
+## Quick start
+
+### Install from PyPI
+
+```bash
+# uv
+uv pip install origami-engine
+
+# pip
+pip install origami-engine
+```
+
+### Install from source
+
+```bash
+git clone https://github.com/ihsan31415/origami-engine.git
+cd origami-engine
+
+# uv
+uv venv && source .venv/bin/activate
+uv pip install -e ".[dev]"
+
+# pip
+python -m venv .venv && source .venv/bin/activate
+pip install -e ".[dev]"
+```
+
+### Validate (source installation)
+
+```bash
+python -m pytest -q tests
+python origami_engine/render_individual.py
+```
+
+*For detailed installation steps, environment management, and usage tutorials, see [GETTING_STARTED.md](docs/GETTING_STARTED.md).*
+
 ## 📖 Documentation
 
 For in-depth information, see the dedicated documentation files:
@@ -126,36 +162,7 @@ For in-depth information, see the dedicated documentation files:
 - `origami_engine/render_individual.py` — render to MP4/video report
 - `origami_engine/example.py` — minimal evaluation workflow
 
-## Quick start
-
-Install from PyPI with `pip` or `uv`:
-
-### Using pip
-```bash
-python -m venv .venv
-. .venv/bin/activate
-pip install origami-engine[dev]
-```
-
-### Using uv (recommended, faster)
-```bash
-uv pip install origami-engine[dev]
-```
-
-### Without creating a venv (quick test)
-```bash
-pip install origami-engine
-```
-
-### After installation, run the validation suite:
-```bash
-python -m pytest -q tests
-python origami_engine/render_individual.py
-```
-
-*For detailed installation steps, environment management, and usage tutorials, see [GETTING_STARTED.md](docs/GETTING_STARTED.md).*
-
-## Library API (brief)
+## Library API
 
 ```bash
 pip install -e ".[dev]"
