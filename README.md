@@ -20,7 +20,18 @@
   <a href="LICENSE"><img src="https://img.shields.io/github/license/ihsan31415/origami-engine" alt="License"></a>
 </div>
 
-This project is a Python-based origami folding simulator built around MuJoCo. It reconstructs a crease pattern from 2D line segments, validates the paper topology, generates a MuJoCo model for the folded sheet, applies fold-angle targets, and optionally vibrates the support table to simulate a realistic folding environment. The code is structured as an **engineering library** rather than a pure toy example.
+This project is a Python-based origami folding simulator built around MuJoCo. It reconstructs a crease pattern from 2D line segments, validates the paper topology, generates a MuJoCo model for the folded sheet, applies fold-angle targets, and optionally vibrates the support table to simulate a realistic folding environment. The code is structured as an engineering pipeline rather than a pure toy 
+
+example: crease patterns are normalized into a canonical format, polygon faces are built from the sheet layout, MuJoCo XML is generated from the resulting pattern, and the net displacement of the paper is measured as a forward-folding fitness signal.
+
+## What this project does
+- Builds a crease network from `p1`, `p2`, and `angle` data
+- Verifies that the crease graph tiles the square sheet without invalid sliver faces
+- Creates a MuJoCo model from the pattern geometry and hinge constraints
+- Drives fold actuators toward target fold angles during simulation
+- Applies a small support-table vibration for dynamic motion
+- Measures the forward displacement of the paper centroid
+- Exports the rendered motion to video for inspection
 
 ## Simulation Output
 
