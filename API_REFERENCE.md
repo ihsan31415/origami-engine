@@ -64,8 +64,8 @@ The packaged JSON Schema (dict) loaded from `origami_engine/schemas/crease_patte
 
 | Export | Description |
 |---|---|
-| `DEFAULT_PATTERN_JSON` | `Path` to `crease_patterns/reference_miura_4x4.json` **in a source checkout**; absent in an installed wheel |
-| `load_default_creases() -> list[Crease]` | Load `DEFAULT_PATTERN_JSON` when present, else fall back to the embedded `reference_miura_render_creases()` (same 24-crease / 16-face / 9-loop topology) |
+| `DEFAULT_PATTERN_JSON` | `Path` to the packaged `origami_engine/crease_patterns/reference_miura_4x4.json` (shipped in wheel and sdist; falls back to the repo-root `crease_patterns/` copy in odd layouts) |
+| `load_default_creases() -> list[Crease]` | Load `DEFAULT_PATTERN_JSON` (24 creases, 16 faces, 9 loop edges); only if the file is missing, fall back to the embedded `reference_miura_render_creases()` (same topology) |
 | `reference_miura_legacy_creases() -> list[Crease]` | Embedded legacy 4×4 Miura-ori crease list (used by tests/examples) |
 | `reference_miura_render_creases() -> list[Crease]` | Embedded render-tuned Miura-ori crease list (used by the renderer) |
 
@@ -117,7 +117,7 @@ Also installed as the **`origami-render`** console command (`[project.scripts]` 
 |---|---|---|
 | `trace_simulation` | `(creases, duration=2.0, fold_duration=3.0, fps=24, trajectory=(1,0,0), vibrate=True, amp_x, amp_z, freq_hz)` | Simulate + capture frames (720×720 `mujoco.Renderer`, camera lookat `[0.5,0.5,0.05]`, distance 2.5, azimuth 90, elevation −30). Returns dict with `frames`, centroids, `forward_displacement`, `model`, `data`, `info`, `pattern` |
 | `export_video` | `(frames, output_path, fps=24) -> bool` | MP4 via imageio/libx264 (`yuv420p`); falls back to `.gif` (returns `False`). `ValueError` if no frames |
-| `main` | `()` | CLI body: default pattern, `duration=20.0`, `fold_duration=1e-6`; writes `individual_simulation.mp4` + `render_report.json` and prints the report |
+| `main` | `()` | CLI body: default pattern, `duration=20.0`, `fold_duration=1e-6`; writes `individual_simulation.mp4` + `render_report.json` into the **current working directory** and prints the report |
 
 ## Constants (`origami_engine.constants`)
 

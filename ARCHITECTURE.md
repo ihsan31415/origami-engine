@@ -18,7 +18,7 @@
 | `dynamics.py` | Simulation execution: step loop, actuator ramp, table vibration, centroid tracking | `run_simulation`, `drive_table`, `paper_centroid` |
 | `serialization.py` | Crease input normalization + JSON I/O, validated against the packaged JSON Schema | `normalize_creases`, `load_creases_from_json`, `save_creases_to_json`, `CREASE_SCHEMA` |
 | `evaluation.py` | Fitness API: forward displacement, single & population scoring (sequential or process pool) | `compute_forward_displacement`, `evaluate_individual`, `evaluate_population` |
-| `patterns.py` | Reusable reference crease patterns + default loader with embedded fallback | `load_default_creases`, `reference_miura_legacy_creases`, `reference_miura_render_creases`, `DEFAULT_PATTERN_JSON` |
+| `patterns.py` | Reusable reference crease patterns + default loader reading the packaged JSON (embedded pattern as defensive fallback) | `load_default_creases`, `reference_miura_legacy_creases`, `reference_miura_render_creases`, `DEFAULT_PATTERN_JSON` |
 | `plotting.py` | Reference-style crease-pattern plot (Mountain/Valley colors, angle labels, face indices, loop-edge markers) | `plot_pattern` |
 | `simulation.py` | Backward-compatible facade re-exporting the core API + constants | `from origami_engine.simulation import ...` keeps old code working |
 | `render_individual.py` | Render a pattern to MP4/GIF + JSON report; also the `origami-render` CLI | `trace_simulation`, `export_video`, `main` |
@@ -67,7 +67,7 @@
 - **Backward-compatible facade.** `origami_engine/simulation.py` re-exports the core API and all constants so pre-modularization imports keep working.
 - **Deterministic scoring.** Fitness = projected displacement of the paper centroid between t=0 and t=duration, under fixed `duration`/`fold_duration`/`trajectory`/vibration settings; see [EVALUATION.md](EVALUATION.md).
 - **Reproducible artifacts.** Rendering writes `individual_simulation.mp4` plus a machine-readable `render_report.json`.
-- **Packaging.** `pyproject.toml` (setuptools) declares `origami-engine` with runtime deps (`mujoco`, `numpy`, `shapely`, `matplotlib`, `imageio[ffmpeg]`, `jsonschema`), a `dev` extra (pytest, pytest-cov, ruff, mypy, pre-commit), the `origami-render` console script, and ships the schema via `[tool.setuptools.package-data]`. Repo-only files (`tests/`, `examples/`, `crease_patterns/`) are intentionally not in the wheel; `load_default_creases()` falls back to an embedded pattern in that case.
+- **Packaging.** `pyproject.toml` (setuptools) declares `origami-engine` with runtime deps (`mujoco`, `numpy`, `shapely`, `matplotlib`, `imageio[ffmpeg]`, `jsonschema`), a `dev` extra (pytest, pytest-cov, ruff, mypy, pre-commit), the `origami-render` console script, and ships the JSON Schema **and** the reference crease pattern via `[tool.setuptools.package-data]` (`schemas/*.json`, `crease_patterns/*.json`), so `load_default_creases()` behaves identically in a wheel and in a checkout. Repo-only files (`tests/`, `examples/`, the repo-root `crease_patterns/` folder) are intentionally not in the wheel. The `origami-render` CLI writes its outputs to the current working directory, not next to the installed package.
 
 ## Project layout
 
@@ -83,6 +83,7 @@
 │   ├── dynamics.py            # run_simulation, drive_table, paper_centroid
 │   ├── serialization.py       # normalize/JSON I/O + CREASE_SCHEMA
 │   ├── schemas/crease_pattern.schema.json
+│   ├── crease_patterns/reference_miura_4x4.json   # shipped as package data
 │   ├── evaluation.py          # fitness APIs
 │   ├── patterns.py            # reference crease patterns
 │   ├── plotting.py            # plot_pattern
@@ -90,9 +91,9 @@
 │   ├── render_individual.py   # video renderer + origami-render CLI
 │   └── example.py             # minimal demo
 ├── examples/                  # runnable snippets (01–05) + README.md
-├── crease_patterns/           # reference_miura_4x4.json (repo only)
+├── crease_patterns/           # reference_miura_4x4.json (repo copy; byte-identical to the packaged one, test-guarded)
 ├── experiments/               # archived prototype notebooks + TIMELINE.md
-├── tests/                     # pytest suite (test_evaluation.py, conftest.py)
+├── tests/                     # pytest suite (test_evaluation.py, test_packaging.py, conftest.py)
 ├── docs/                      # crease_pattern_plot.png
 ├── .github/workflows/ci.yml   # lint + typecheck + test matrix; PyPI publish
 ├── Makefile                   # venv/install/test/lint/format/typecheck/render/...

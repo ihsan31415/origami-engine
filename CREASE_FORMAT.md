@@ -30,11 +30,12 @@ Every public entry point (`run_simulation`, `evaluate_individual`, `evaluate_pop
 3. A **path to a JSON file** (string or `pathlib.Path`) — loaded and schema-validated by `load_creases_from_json`
 
 ```python
-from origami_engine import normalize_creases
+from origami_engine import DEFAULT_PATTERN_JSON, Crease, normalize_creases
 
 normalize_creases([Crease((0, 0), (1, 0), 0.5)])  # Crease list
 normalize_creases([{"p1": [0, 0], "p2": [1, 0], "angle": 0.5}])  # dict list
 normalize_creases("crease_patterns/reference_miura_4x4.json")  # JSON path (repo checkout)
+normalize_creases(DEFAULT_PATTERN_JSON)  # packaged copy (any install)
 ```
 
 Errors raised by `normalize_creases`: `ValueError` for `None`, empty lists, dicts with missing keys, or unsupported item types; `TypeError` if the input is not a list/tuple/path.
@@ -99,13 +100,13 @@ Writes Form A with 2-space indentation, creating parent directories as needed, a
 
 ## The reference pattern
 
-`crease_patterns/reference_miura_4x4.json` (repo checkout only — not shipped in the wheel) is a 4×4 Miura-ori: **24 creases, 16 faces, 9 loop edges**, stored with `"angle_unit": "degree"` and ±45° angles.
+The reference pattern is a 4×4 Miura-ori: **24 creases, 16 faces, 9 loop edges**, stored with `"angle_unit": "degree"` and ±45° angles. It exists in two byte-identical copies (guarded by `tests/test_packaging.py`): the repo-root `crease_patterns/reference_miura_4x4.json` (linked from the README) and the packaged `origami_engine/crease_patterns/reference_miura_4x4.json`, which **ships in the wheel** so it is available in every install method.
 
 ```python
 from origami_engine import DEFAULT_PATTERN_JSON, load_default_creases
 
-load_default_creases()  # reads DEFAULT_PATTERN_JSON if present, else the embedded
-# reference_miura_render_creases() fallback (same topology)
+DEFAULT_PATTERN_JSON  # -> <package>/origami_engine/crease_patterns/reference_miura_4x4.json
+load_default_creases()  # reads DEFAULT_PATTERN_JSON (always present in wheel + checkout)
 ```
 
 ## From creases to a validated `Pattern`

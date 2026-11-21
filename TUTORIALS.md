@@ -161,6 +161,7 @@ Two ways:
 
 ```bash
 origami-render        # writes individual_simulation.mp4 + render_report.json
+                      # into the current working directory, wherever that is
 ```
 
 **From Python**, so you control inputs, duration, and the output path:

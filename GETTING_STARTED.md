@@ -59,9 +59,9 @@ Run the bundled renderer as a console script (installed into the active environm
 origami-render
 ```
 
-> **Note on output paths:** `origami-render` resolves its output files (`individual_simulation.mp4`, `render_report.json`) relative to the installed package location. From a source checkout that is the repository root; from a PyPI wheel it is inside the environment's `site-packages`. If you installed from PyPI and want the MP4 in your current directory, copy it out afterwards, or use the source checkout (Method 3) / the Python API (`trace_simulation` + `export_video`, see [SIMULATION.md](SIMULATION.md)) to control the output path explicitly.
+> **Note on output paths:** `origami-render` always writes `individual_simulation.mp4` and `render_report.json` into the **current working directory** — identically for a source checkout and a PyPI wheel. Run it from whatever directory you want the MP4 in. To control the path programmatically, use `trace_simulation` + `export_video` directly (see [SIMULATION.md](SIMULATION.md)).
 
-> **Note on packaged files:** the wheel ships the package (including the JSON Schema in `origami_engine/schemas/`) but not the repo's `tests/`, `examples/`, or `crease_patterns/` folder. Consequently `load_default_creases()` falls back to the embedded `reference_miura_render_creases()` pattern when the JSON file is absent. From a source checkout, `crease_patterns/reference_miura_4x4.json` is found and used. The pattern is equivalent in structure (24 creases, 16 faces, 9 loop edges); see [CREASE_FORMAT.md](CREASE_FORMAT.md).
+> **Note on packaged files:** the wheel ships the package including the JSON Schema (`origami_engine/schemas/`) **and** the reference crease pattern (`origami_engine/crease_patterns/reference_miura_4x4.json`), so `load_default_creases()` reads the same 24-crease / 16-face / 9-loop Miura-ori pattern in every install method (see [CREASE_FORMAT.md](CREASE_FORMAT.md)). The wheel does not ship the repo's `tests/`, `examples/`, or the repo-root `crease_patterns/` folder — those are development assets.
 
 ## Method 2 — uv (from PyPI)
 
@@ -137,7 +137,7 @@ make lint && make typecheck                # ruff + mypy
 python examples/01_evaluate_reference.py   # individual examples
 ```
 
-From a source checkout, `origami-render` writes `individual_simulation.mp4` and `render_report.json` into the repository root, and `load_default_creases()` reads `crease_patterns/reference_miura_4x4.json`.
+From a source checkout, `make render` writes `individual_simulation.mp4` and `render_report.json` into the repository root (the Makefile runs from there, and `origami-render` writes to the current working directory), and `load_default_creases()` reads the packaged `origami_engine/crease_patterns/reference_miura_4x4.json`, which is byte-identical to the repo-root `crease_patterns/reference_miura_4x4.json` (guarded by a test).
 
 ## Method 4 — no virtualenv (quick test)
 

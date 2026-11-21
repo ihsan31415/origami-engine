@@ -21,7 +21,7 @@ uv venv .venv && . .venv/bin/activate
 uv pip install -e ".[dev]"
 ```
 
-`[dev]` adds `pytest`, `pytest-cov`, `ruff`, `mypy`, and `pre-commit`. Editable mode means your edits are live immediately and the repo-only assets (`tests/`, `examples/`, `crease_patterns/`) are in place.
+`[dev]` adds `pytest`, `pytest-cov`, `ruff`, `mypy`, and `pre-commit`. Editable mode means your edits are live immediately and the repo-only assets (`tests/`, `examples/`, repo-root `crease_patterns/`) are in place. Note the package ships its own copy of the reference pattern (`origami_engine/crease_patterns/reference_miura_4x4.json`, declared in `[tool.setuptools.package-data]`); if you edit the repo-root `crease_patterns/reference_miura_4x4.json`, keep the packaged copy byte-identical — `tests/test_packaging.py` enforces this.
 
 ## Everyday commands (Makefile)
 
@@ -31,7 +31,7 @@ uv pip install -e ".[dev]"
 | `make venv` / `make install` | Create `.venv` / install package + dev deps editable |
 | `make test` | `pytest -q` (coverage of `origami_engine` is configured via addopts) |
 | `make example` | `python origami_engine/example.py` (minimal evaluation demo) |
-| `make render` | `python origami_engine/render_individual.py` (writes `individual_simulation.mp4` + `render_report.json` in the repo root) |
+| `make render` | `python origami_engine/render_individual.py` (writes `individual_simulation.mp4` + `render_report.json` to the current working directory — the repo root when run via make) |
 | `make examples` | Run every `examples/0*.py` script |
 | `make lint` | `ruff check .` + `ruff format --check .` |
 | `make format` | `ruff format .` + `ruff check --fix .` |

@@ -57,9 +57,9 @@ See [CREASE_FORMAT.md](CREASE_FORMAT.md) for the full format rules and the JSON 
 | Behavior | PyPI wheel | Source checkout (`pip install -e .`) |
 |---|---|---|
 | `import origami_engine`, `origami-render` CLI | identical | identical |
-| `load_default_creases()` | embedded fallback pattern | reads `crease_patterns/reference_miura_4x4.json` (same topology: 24 creases / 16 faces / 9 loops) |
+| `load_default_creases()` | reads the packaged `origami_engine/crease_patterns/reference_miura_4x4.json` | same file (byte-identical to repo-root `crease_patterns/reference_miura_4x4.json`) |
 | `tests/`, `examples/`, `Makefile` targets | not shipped | available (`make test`, `make examples`, …) |
-| `origami-render` output files | written under the environment's `site-packages` | written to the repo root |
+| `origami-render` output files | written to the current working directory | written to the repo root (Makefile runs from there) |
 
 ## Upgrading / uninstalling
 

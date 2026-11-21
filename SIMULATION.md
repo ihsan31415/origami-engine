@@ -114,7 +114,7 @@ Defined in `origami_engine/constants.py` and re-exported at package level:
 - `export_video(frames, output_path, fps=24)` — writes MP4 via `imageio` + `libx264` (`-pix_fmt yuv420p`); on failure falls back to an animated `.gif` and returns `False` (returns `True` when the MP4 was written). Raises `ValueError` if `frames` is empty.
 - `main()` — the body of the **`origami-render` console script** (`pyproject.toml` → `[project.scripts]`). Uses the default pattern, `duration=20.0`, `fold_duration=1e-6`, `vibrate=True`; writes `individual_simulation.mp4` and a `render_report.json` (crease source, duration, centroids, rendered vs. evaluator forward displacement, video path) and prints the report.
 
-Output paths are resolved relative to the package location's parent — the repo root in a source checkout, `site-packages` for a PyPI wheel install (see the note in [GETTING_STARTED.md](GETTING_STARTED.md)). Use `trace_simulation` + `export_video` directly when you need full control over the output path.
+Output paths are resolved against the **current working directory** (`OUTPUT_VIDEO` / `OUTPUT_REPORT` in `render_individual.py`), so `origami-render` writes `individual_simulation.mp4` + `render_report.json` wherever you run it — identically for a source checkout and a PyPI wheel install (see the note in [GETTING_STARTED.md](GETTING_STARTED.md)). Use `trace_simulation` + `export_video` directly when you need full programmatic control over the output path.
 
 ## Performance notes
 

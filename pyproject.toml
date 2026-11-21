@@ -50,7 +50,7 @@ dev = [
 include = ["origami_engine*"]
 
 [tool.setuptools.package-data]
-origami_engine = ["schemas/*.json"]
+origami_engine = ["schemas/*.json", "crease_patterns/*.json"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

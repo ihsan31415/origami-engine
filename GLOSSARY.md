@@ -27,11 +27,11 @@ Terminology used across the documentation and the code.
 | **Forward displacement** | Fitness score: `dot(final_centroid − initial_centroid, normalize(trajectory))` — how far the sheet moved along the requested direction while folding. |
 | **Trajectory** | Fitness direction: a 2/3-vector, or an (N,2)/(N,3) waypoint array (direction = last − first), normalized. Default `(1, 0, 0)` = +x. |
 | **Individual / population** | Evaluation terminology borrowed from genetic algorithms: one crease pattern = one individual; `evaluate_population` scores a list of them (optionally in a process pool via `workers`). |
-| **Miura-ori** | The classic rigid-foldable origami tessellation used as the reference pattern (`crease_patterns/reference_miura_4x4.json`: 24 creases, 16 faces, 9 loop edges). |
+| **Miura-ori** | The classic rigid-foldable origami tessellation used as the reference pattern (24 creases, 16 faces, 9 loop edges) — repo copy at `crease_patterns/reference_miura_4x4.json`, packaged copy at `origami_engine/crease_patterns/reference_miura_4x4.json` (shipped in the wheel, byte-identical). |
 | **`solref` / `solimp`** | MuJoCo constraint solver softness parameters (time constant/damping and impedance) tuned in `constants.py` (`EQ_SOLREF`, `EQ_SOLIMP`, geom defaults). |
 | **`condim`** | Contact dimensionality (3 = normal + 2 friction directions) used for paper geoms and the table. |
 | **MJX** | MuJoCo's JAX backend (`mujoco.mjx`) — consumes the same MJCF XML and enables batched/GPU simulation. A natural future backend for `evaluate_population`; see the discussion in [SIMULATION.md](SIMULATION.md). |
-| **`origami-render`** | Console script installed by the package (entry point `origami_engine.render_individual:main`) that renders the default pattern to `individual_simulation.mp4` + `render_report.json`. |
+| **`origami-render`** | Console script installed by the package (entry point `origami_engine.render_individual:main`) that renders the default pattern to `individual_simulation.mp4` + `render_report.json` in the current working directory. |
 | **JSON Schema** | `origami_engine/schemas/crease_pattern.schema.json` (draft 2020-12) validating crease input files; exposed as `origami_engine.CREASE_SCHEMA`. |
 
 ## See also
