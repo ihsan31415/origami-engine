@@ -97,9 +97,18 @@ Below is the physical rendering of the simulation output, demonstrating how the 
 
 For in-depth information, see the dedicated documentation files:
 
-- **[GETTING_STARTED.md](GETTING_STARTED.md)** — installation, quick start tutorials, example crease input
-- **[API_REFERENCE.md](API_REFERENCE.md)** — full public API exports, domain types, and constants
+- **[GETTING_STARTED.md](GETTING_STARTED.md)** — every install method (pip, uv, source, no-venv), quick start, first simulation
+- **[TUTORIALS.md](TUTORIALS.md)** — step-by-step recipes: inspect a pattern, score it, JSON round-trip, populations, plotting, rendering
+- **[API_REFERENCE.md](API_REFERENCE.md)** — full public API signatures, domain types, and constants
 - **[ARCHITECTURE.md](ARCHITECTURE.md)** — module overview, data flow, and design decisions
+- **[CREASE_FORMAT.md](CREASE_FORMAT.md)** — crease semantics and the JSON input format (validated against the JSON Schema)
+- **[SIMULATION.md](SIMULATION.md)** — MuJoCo XML model structure, the step loop, rendering, and the `origami-render` CLI
+- **[EVALUATION.md](EVALUATION.md)** — fitness semantics and sequential/parallel population evaluation
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** — install, headless, pattern-validity, and simulation-stability issues
+- **[GLOSSARY.md](GLOSSARY.md)** — domain terminology
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** — dev setup, checks, and the PR process
+- **[examples/README.md](examples/README.md)** — what each runnable example script does
+- **[experiments/TIMELINE.md](experiments/TIMELINE.md)** — the archived prototyping notebooks and how they map to the engine
 
 *The README provides a brief overview and the simulation output (the eyecatching feature). All technical content is available in the dedicated documentation files.*
 
