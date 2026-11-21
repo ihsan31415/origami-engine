@@ -1,6 +1,6 @@
 # Experimental Timeline
 
-> Part of the documentation set — traceable from the root [README.md](../README.md) via [ARCHITECTURE.md](../ARCHITECTURE.md).
+> Part of the documentation set — traceable from the root [README.md](../README.md) via [ARCHITECTURE.md](../docs/ARCHITECTURE.md).
 
 This folder preserves the **prototyping stage** of the simulator, before the code was modularized into `origami_engine/`. The four Jupyter notebooks document how the fold physics was discovered and tuned: crease generation, collision handling, viscoelastic spring/damping behavior, and the fixes that stopped the paper mesh from tearing at extreme fold angles.
 
@@ -71,6 +71,6 @@ jupyter notebook experiments/notebooks
 ## See also
 
 - [README.md](../README.md) — project overview, simulation output, documentation map
-- [ARCHITECTURE.md](../ARCHITECTURE.md) — current module layout and data flow
-- [SIMULATION.md](../SIMULATION.md) — the production simulation pipeline these notebooks led to
+- [ARCHITECTURE.md](../docs/ARCHITECTURE.md) — current module layout and data flow
+- [SIMULATION.md](../docs/SIMULATION.md) — the production simulation pipeline these notebooks led to
 - [../origami_engine/constants.py](../origami_engine/constants.py) and [../origami_engine/model.py](../origami_engine/model.py) — where the tuned constants live

@@ -1,6 +1,6 @@
 # Simulation Pipeline & Rendering
 
-> **Documentation map:** [README](README.md) · [Getting Started](GETTING_STARTED.md) · [Tutorials](TUTORIALS.md) · [Crease Format](CREASE_FORMAT.md) · **Simulation** · [Evaluation](EVALUATION.md) · [API Reference](API_REFERENCE.md) · [Architecture](ARCHITECTURE.md) · [Troubleshooting](TROUBLESHOOTING.md) · [Glossary](GLOSSARY.md) · [Contributing](CONTRIBUTING.md)
+> **Documentation map:** [README](../README.md) · [Getting Started](GETTING_STARTED.md) · [Tutorials](TUTORIALS.md) · [Crease Format](CREASE_FORMAT.md) · **Simulation** · [Evaluation](EVALUATION.md) · [API Reference](API_REFERENCE.md) · [Architecture](ARCHITECTURE.md) · [Troubleshooting](TROUBLESHOOTING.md) · [Glossary](GLOSSARY.md) · [Contributing](CONTRIBUTING.md)
 
 This document explains what happens inside `run_simulation`, how the MuJoCo XML model is generated, what the physical constants mean, and how video rendering works.
 
@@ -127,4 +127,4 @@ Output paths are resolved against the **current working directory** (`OUTPUT_VID
 - [EVALUATION.md](EVALUATION.md) — turning a `SimulationResult` into a fitness score
 - [API_REFERENCE.md](API_REFERENCE.md) — exact signatures of `run_simulation`, `generate_xml`, `drive_table`, `paper_centroid`, `trace_simulation`, `export_video`
 - [ARCHITECTURE.md](ARCHITECTURE.md) — module responsibilities and data flow
-- [experiments/TIMELINE.md](experiments/TIMELINE.md) — how these physics parameters were tuned in the prototype notebooks
+- [TIMELINE.md](../experiments/TIMELINE.md) — how these physics parameters were tuned in the prototype notebooks (in `experiments/`)

@@ -1,6 +1,6 @@
 # Architecture
 
-> **Documentation map:** [README](README.md) · [Getting Started](GETTING_STARTED.md) · [Tutorials](TUTORIALS.md) · [Crease Format](CREASE_FORMAT.md) · [Simulation](SIMULATION.md) · [Evaluation](EVALUATION.md) · [API Reference](API_REFERENCE.md) · **Architecture** · [Troubleshooting](TROUBLESHOOTING.md) · [Glossary](GLOSSARY.md) · [Contributing](CONTRIBUTING.md)
+> **Documentation map:** [README](../README.md) · [Getting Started](GETTING_STARTED.md) · [Tutorials](TUTORIALS.md) · [Crease Format](CREASE_FORMAT.md) · [Simulation](SIMULATION.md) · [Evaluation](EVALUATION.md) · [API Reference](API_REFERENCE.md) · **Architecture** · [Troubleshooting](TROUBLESHOOTING.md) · [Glossary](GLOSSARY.md) · [Contributing](CONTRIBUTING.md)
 
 ## Overview
 
@@ -94,12 +94,11 @@
 ├── crease_patterns/           # reference_miura_4x4.json (repo copy; byte-identical to the packaged one, test-guarded)
 ├── experiments/               # archived prototype notebooks + TIMELINE.md
 ├── tests/                     # pytest suite (test_evaluation.py, test_packaging.py, conftest.py)
-├── docs/                      # crease_pattern_plot.png
+├── docs/                      # all documentation .md files + crease_pattern_plot.png
 ├── .github/workflows/ci.yml   # lint + typecheck + test matrix; PyPI publish
 ├── Makefile                   # venv/install/test/lint/format/typecheck/render/...
 ├── pyproject.toml             # package metadata, deps, tool config
 ├── README.md                  # landing page (banner, badges, simulation output)
-├── GETTING_STARTED.md … CONTRIBUTING.md   # documentation set (see map above)
 └── LICENSE
 ```
 
@@ -132,4 +131,4 @@ Details for contributors: [CONTRIBUTING.md](CONTRIBUTING.md).
 - [CREASE_FORMAT.md](CREASE_FORMAT.md) — input format, schema, pattern validity rules
 - [EVALUATION.md](EVALUATION.md) — fitness semantics, population evaluation
 - [API_REFERENCE.md](API_REFERENCE.md) — every public signature
-- [experiments/TIMELINE.md](experiments/TIMELINE.md) — how the physics constants evolved
+- [TIMELINE.md](../experiments/TIMELINE.md) — how the physics constants evolved (in `experiments/`)

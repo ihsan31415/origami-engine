@@ -1,6 +1,6 @@
 # Contributing
 
-> **Documentation map:** [README](README.md) · [Getting Started](GETTING_STARTED.md) · [Tutorials](TUTORIALS.md) · [Crease Format](CREASE_FORMAT.md) · [Simulation](SIMULATION.md) · [Evaluation](EVALUATION.md) · [API Reference](API_REFERENCE.md) · [Architecture](ARCHITECTURE.md) · [Troubleshooting](TROUBLESHOOTING.md) · [Glossary](GLOSSARY.md) · **Contributing**
+> **Documentation map:** [README](../README.md) · [Getting Started](GETTING_STARTED.md) · [Tutorials](TUTORIALS.md) · [Crease Format](CREASE_FORMAT.md) · [Simulation](SIMULATION.md) · [Evaluation](EVALUATION.md) · [API Reference](API_REFERENCE.md) · [Architecture](ARCHITECTURE.md) · [Troubleshooting](TROUBLESHOOTING.md) · [Glossary](GLOSSARY.md) · **Contributing**
 
 Thanks for your interest in contributing! You can help with code, tests, documentation, example crease patterns, or bug reports.
 
@@ -81,8 +81,8 @@ Configured hooks (`.pre-commit-config.yaml`): `ruff --fix`, `ruff-format`, and `
 
 ## Documentation contributions
 
-- The documentation set lives in the repo root (`README.md`, `GETTING_STARTED.md`, `TUTORIALS.md`, `CREASE_FORMAT.md`, `SIMULATION.md`, `EVALUATION.md`, `API_REFERENCE.md`, `ARCHITECTURE.md`, `TROUBLESHOOTING.md`, `GLOSSARY.md`, `CONTRIBUTING.md`) plus `examples/README.md` and `experiments/TIMELINE.md`.
-- Keep the **documentation map** nav line at the top of each root doc intact and add new pages to it, so every `.md` stays traceable from `README.md`.
+- The documentation set lives in `docs/` (`GETTING_STARTED.md`, `TUTORIALS.md`, `CREASE_FORMAT.md`, `SIMULATION.md`, `EVALUATION.md`, `API_REFERENCE.md`, `ARCHITECTURE.md`, `TROUBLESHOOTING.md`, `GLOSSARY.md`, `CONTRIBUTING.md`) with `README.md` + `CHANGELOG.md` at the repo root, plus `examples/README.md` and `experiments/TIMELINE.md`. Link to docs with the bare filename as the link text (e.g. `[TIMELINE.md](../experiments/TIMELINE.md)`) — never a path prefix like `experiments/TIMELINE.md` inside the button.
+- Keep the **documentation map** nav line at the top of each doc in `docs/` intact and add new pages to it, so every `.md` stays traceable from `README.md`.
 - **Do not modify** the `README.md` banner (`<h1>` title + badge HTML block) or the simulation video tables, and do not edit `CHANGELOG.md` (maintained at release time).
 - Keep docs accurate to the code: signatures in [API_REFERENCE.md](API_REFERENCE.md) must match the source; run the examples when you change behavior.
 

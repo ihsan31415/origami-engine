@@ -1,6 +1,6 @@
 # Crease Pattern & JSON Input Format
 
-> **Documentation map:** [README](README.md) · [Getting Started](GETTING_STARTED.md) · [Tutorials](TUTORIALS.md) · **Crease Format** · [Simulation](SIMULATION.md) · [Evaluation](EVALUATION.md) · [API Reference](API_REFERENCE.md) · [Architecture](ARCHITECTURE.md) · [Troubleshooting](TROUBLESHOOTING.md) · [Glossary](GLOSSARY.md) · [Contributing](CONTRIBUTING.md)
+> **Documentation map:** [README](../README.md) · [Getting Started](GETTING_STARTED.md) · [Tutorials](TUTORIALS.md) · **Crease Format** · [Simulation](SIMULATION.md) · [Evaluation](EVALUATION.md) · [API Reference](API_REFERENCE.md) · [Architecture](ARCHITECTURE.md) · [Troubleshooting](TROUBLESHOOTING.md) · [Glossary](GLOSSARY.md) · [Contributing](CONTRIBUTING.md)
 
 This document is the complete reference for the crease input format: the `Crease` type, the JSON Schema, accepted input shapes, validation rules, and how a crease list becomes a validated `Pattern`.
 
@@ -42,7 +42,7 @@ Errors raised by `normalize_creases`: `ValueError` for `None`, empty lists, dict
 
 ## JSON file format
 
-Validated at load time against the packaged schema [`origami_engine/schemas/crease_pattern.schema.json`](origami_engine/schemas/crease_pattern.schema.json) (JSON Schema draft 2020-12) using `jsonschema`. Invalid files raise `ValueError("invalid crease JSON: ...")`.
+Validated at load time against the packaged schema [`crease_pattern.schema.json`](../origami_engine/schemas/crease_pattern.schema.json) (JSON Schema draft 2020-12) using `jsonschema`. Invalid files raise `ValueError("invalid crease JSON: ...")`.
 
 Two forms are allowed (`oneOf` in the schema):
 
