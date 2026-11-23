@@ -51,8 +51,8 @@ Below is the physical rendering of the simulation output, demonstrating how the 
     <td>
       <strong>Reference Crease Pattern</strong><br>
       The default Miura-ori crease pattern shared by both backends, tiling a square sheet into 16 polygonal faces. <br><br>
-      <a href="origami_engine_mjx/schemas/crease_pattern.schema.json"><strong>Crease Pattern JSON Schema</strong></a> — validates the structure of crease input files.<br>
-      <a href="origami_engine_mjx/crease_patterns/reference_miura_4x4.json"><strong>reference_miura_4x4.json</strong></a> — the reference crease pattern data (p1, p2, and angle per crease).<br><br>
+      <a href="origami_engine/schemas/crease_pattern.schema.json"><strong>Crease Pattern JSON Schema</strong></a> — validates the structure of crease input files.<br>
+      <a href="origami_engine/crease_patterns/reference_miura_4x4.json"><strong>reference_miura_4x4.json</strong></a> — the reference crease pattern data (p1, p2, and angle per crease).<br><br>
       <em>Mountain folds are negative angles (creasing "up"), Valley folds are positive angles (creasing "down").</em>
     </td>
   </tr>
